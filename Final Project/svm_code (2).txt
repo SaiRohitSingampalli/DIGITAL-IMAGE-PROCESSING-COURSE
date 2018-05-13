@@ -1,0 +1,31 @@
+ 
+#Creates the model for multiclass classification 
+
+ t = templateSVM('Standardize',1,'KernelFunction','gaussian');
+
+ Mdl = fitcecoc(X,Y,'Learners',t,'FitPosterior',1);
+   
+    X=feature matrix   
+    Y=Label vector
+ 
+#Prediction from developed model
+
+ [label_predicted,~,~,PosteriorRegion] = predict(Mdl,Test_matrix); 
+
+    Test_matrix is your test data 
+    Mdl is the developed model
+    label_predicted- the label predicted for the test data
+    PosteriorRegion- Gives probability of each point to belong to particular class
+
+#Confusion matrix
+
+ C = confusionmat(label_true,label_predicted)  
+
+                                                                  
+refernce:https://in.mathworks.com/help/stats/fitcecoc.html
+
+ 
+  
+  
+ 
+  
